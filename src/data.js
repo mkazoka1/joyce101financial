@@ -9,7 +9,7 @@ export const OWNER = {
 
 export const HERO = {
   lines:    ['Live Life To The Fullest', 'By Attaining Financial', 'Independence.'],
-  subtitle: 'Your roadmap to wealth, freedom, and the lifestyle you deserve.              starting right now by attending our sessions.',
+  subtitle: 'Your roadmap to wealth, freedom, and the lifestyle you deserve.           starting right now by attending our sessions.',
   cta1:     'Start Your Journey',
   cta2:     'Watch Free Workshop',
 }

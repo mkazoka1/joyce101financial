@@ -1,6 +1,67 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { HERO, OWNER, TRUST_STATS } from '../data'
 import styles from './Hero.module.css'
+
+function HeroEmailForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('https://formspree.io/f/xwvjlnql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (res.ok) { setStatus('success'); setEmail('') }
+      else setStatus('error')
+    } catch { setStatus('error') }
+  }
+
+  if (status === 'success') return (
+    <div style={{ color: '#c9a84c', marginTop: '1.5rem', fontSize: '1rem', fontWeight: 500 }}>
+      🎉 Thank you! Joyce will be in touch soon.
+    </div>
+  )
+
+  return (
+    <form onSubmit={handleSubmit} style={{ marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem', maxWidth: '480px' }}>
+      <input
+        type="email"
+        placeholder="Enter your email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        style={{
+          flex: 1, minWidth: '200px',
+          background: 'rgba(255,255,255,0.08)',
+          border: '1px solid rgba(201,168,76,0.4)',
+          borderRadius: '100px',
+          padding: '0.8rem 1.4rem',
+          color: 'white',
+          fontFamily: 'Outfit, sans-serif',
+          fontSize: '0.9rem',
+          outline: 'none',
+        }}
+      />
+      <button
+        type="submit"
+        className="btn-gold"
+        disabled={status === 'sending'}
+        style={{ whiteSpace: 'nowrap' }}
+      >
+        {status === 'sending' ? 'Sending...' : 'Start Your Journey'}
+      </button>
+      {status === 'error' && (
+        <p style={{ color: '#ff6b6b', fontSize: '0.85rem', width: '100%' }}>
+          Something went wrong. Please try again.
+        </p>
+      )}
+    </form>
+  )
+}
 
 // Splits text into individually animated letter spans
 function AnimLetters({ text, baseDelay, gold = false }) {
@@ -75,11 +136,11 @@ export default function Hero() {
           <AnimSub text={HERO.subtitle} baseDelay={subDelay} />
         </p>
 
-        {/* CTA buttons */}
-        <div className={styles.cta} style={{ animationDelay: `${ctaDelay}s` }}>
-          <button className="btn-gold">{HERO.cta1}</button>
-          <button className="btn-ghost">{HERO.cta2}</button>
-        </div>
+<HeroEmailForm />
+
+<div style={{ display:'flex', flexWrap:'wrap', gap:'0.75rem', marginTop:'1rem', opacity:1 }} className="hero-cta-wrap">
+  <button className="btn-ghost">{HERO.cta2}</button>
+</div>
 
         {/* Trust strip */}
         <div className={styles.trustStrip} style={{ animationDelay: `${trustDelay}s` }}>
