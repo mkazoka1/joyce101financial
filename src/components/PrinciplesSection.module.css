@@ -1,0 +1,29 @@
+.section { background: #0b1f3a; padding: clamp(3rem, 8vw, 5.5rem) 1.25rem; }
+.inner   { max-width: 960px; margin: 0 auto; }
+.label   { font-size: 0.72rem; color: rgba(201,168,76,0.7); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.6rem; }
+.heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 700;
+  color: #fff; line-height: 1.2; margin-bottom: 0.4rem;
+}
+.sub { font-size: clamp(0.9rem, 2.5vw, 1rem); color: rgba(255,255,255,0.45); font-weight: 300; max-width: 500px; line-height: 1.65; margin-bottom: 2.5rem; }
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 16px; padding: 1.5rem; height: 100%;
+  opacity: 0; transform: translateY(24px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card.visible { animation: riseInCard 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.card:hover   { transform: translateY(-4px) !important; box-shadow: 0 12px 36px rgba(0,0,0,0.25); }
+
+.icon  { font-size: 1.8rem; margin-bottom: 0.9rem; }
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 3vw, 1.3rem); font-weight: 700;
+  color: #c9a84c; margin-bottom: 0.5rem;
+}
+.text  { font-size: clamp(0.82rem, 2.5vw, 0.88rem); color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+
+@keyframes riseInCard { to { opacity: 1; transform: translateY(0); } }

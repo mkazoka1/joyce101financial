@@ -1,0 +1,9 @@
+.footer { background: #060f1e; padding: 1.75rem 1.25rem; text-align: center; }
+.logo   { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: #c9a84c; margin-bottom: 0.5rem; }
+.text   { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+.linkedin {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.6rem; color: #c9a84c; text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 0.04em; transition: opacity 0.2s;
+}
+.linkedin:hover { opacity: 0.75; }

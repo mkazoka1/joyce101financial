@@ -1,0 +1,135 @@
+.hero {
+  background: linear-gradient(135deg, #0b1f3a 0%, #122844 60%, #1a3a5c 100%);
+  min-height: 100vh;
+  padding: 3rem 1.25rem 4rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(201,168,76,0.07) 0%, transparent 45%);
+}
+
+.inner {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Owner badge ── */
+.ownerBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: translateY(-12px);
+  animation: riseIn 0.7s ease 0.2s forwards;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 600px) {
+  .ownerBadge {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    margin-bottom: 0;
+  }
+}
+.ownerImg {
+  width: clamp(140px, 40vw, 190px);
+  height: clamp(140px, 40vw, 190px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #c9a84c;
+  box-shadow: 0 0 0 5px rgba(201,168,76,0.2);
+}
+.ownerName {
+  font-size: clamp(0.7rem, 2.5vw, 0.78rem);
+  color: #c9a84c;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.ownerTitle {
+  font-size: clamp(0.6rem, 2vw, 0.65rem);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── Headline ── */
+.h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: #fff;
+  margin-top: 0;
+  max-width: 760px;
+}
+@media (min-width: 600px) {
+  .h1 { margin-top: clamp(4.5rem, 12vw, 5.5rem); }
+}
+
+/* ── Subtitle ── */
+.sub {
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  max-width: 540px;
+  margin-top: 1.25rem;
+  line-height: 1.7;
+}
+
+/* ── CTA row ── */
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: riseIn 0.6s ease forwards;
+}
+@media (max-width: 400px) {
+  .cta { flex-direction: column; }
+  .cta button { width: 100%; max-width: 260px; }
+}
+
+/* ── Trust strip ── */
+.trustStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 2.5rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+.trustItem { display: flex; flex-direction: column; }
+.trustNum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  color: #c9a84c;
+  line-height: 1;
+}
+.trustLabel {
+  font-size: clamp(0.65rem, 2vw, 0.72rem);
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 0.2rem;
+}
+
+@keyframes riseIn { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
